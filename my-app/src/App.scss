@@ -1,0 +1,183 @@
+@import url('./App/styles/serverCard/cardElements.scss');
+@import url('./App/styles/serverCard/mainCard.scss');
+
+*{
+  background-color: #2b2f39;
+  color: rgb(94, 94, 94);
+  margin: 0;
+  padding: 0;
+}
+html,body {
+  height: 100%;
+}
+.header {
+  z-index: 999;
+  height: 30px;
+  width: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
+  background-color: #23272B;
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}
+.header-title {
+  display: flex;
+  position: absolute;
+  translate: -50%;
+  left: 50vw;
+  border-radius: 0px 0px 15px 0px;
+  background-color: transparent;
+  font-style: normal;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+}
+.header-leftmenu-container {
+  z-index: 1;
+  position: absolute;
+  left: 10px;
+  display: flex;
+  margin-top: 60px;
+  height: 90px;
+  width: 60px;
+  border: solid;
+  border-color: #6072B7;
+  border-width: 0px 3px 3px 3px;
+  border-radius: 0px 0px 15px 15px;
+  background-color: #23272B;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.header-leftmenu-container > h3 {
+  margin-top: 5px;
+  background-color: transparent;
+  font-style: normal;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  color: azure;
+}
+.header-button-left {
+  background: url("../images/cube.svg") no-repeat scroll 0 0 transparent;
+  background-position: center;
+  background-size: 50px;
+  cursor: pointer;
+  border: none;
+  height: 70px;
+  width: 70px;
+  align-self: flex-end;
+  transition: 0.1s;
+  margin-top: -5px;
+}
+.header-button-left:hover {
+  background-size: 42px;
+  transition: 0.1s;
+}
+.header-button-left:active {
+  background-size: 50px;
+  transition: 0.1s;
+}
+.header-buttons-container {
+ display: flex;
+ position: absolute;
+ right: 0;
+ align-items: center;
+ height: 25px;
+ width: 50px;
+ cursor: pointer;
+ background-color: transparent;
+}
+
+.header-buttons-container > button {
+  display: flex;
+  z-index: 1;
+  height: 18px;
+  width: 18px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 15px;
+  margin: 3px;
+  -webkit-app-region: no-drag;
+}
+.header-button-minimize {
+ background-color: rgb(222, 195, 76);
+ -webkit-app-region: no-drag;
+ transition: 0.2s;
+}
+.header-button-exit {
+ background-color: rgb(222, 76, 76);
+ -webkit-app-region: no-drag;
+ transition: 0.2s;
+}
+
+.header-button-minimize:hover {
+  background-color: rgb(171, 154, 76);
+  transition: 0.2s;
+}
+.header-button-exit:hover {
+  background-color: rgb(165, 71, 71);
+  transition: 0.2s;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+  position: absolute;
+  width: 60px;
+  height: 0px;
+  margin-top: 45px;
+  background-color: #23272B;
+  left: 10px;
+  transition: 0.5s;
+  border: solid;
+  border-color: rgba(0, 128, 255, 0.471);
+  border-width: 0px 3px 3px 3px;
+  border-radius: 0px 0px 15px 15px;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.sidebar > button {
+  margin: 5px;
+  width: 50px;
+  height: 50px;
+  outline: none;
+  border-radius: 8px;
+  border-width: 0px;
+  transition: 0.3s;
+  cursor: pointer;
+  border: none;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.btnServers {
+  background-image: url('../images/Data_bank.svg');
+  background-size: 45px;
+}
+.btnFriends {
+  background-image: url('../images/Group_light.svg');
+  background-size: 45px;
+}
+.btnSettings {
+  background-image: url('../images/Setting_line_light.svg');
+  background-size: 35px;
+}
+.btnProfile {
+  background-image: url('../images/User_alt_light.svg');
+  background-size: 45px;
+}
+.btnExitAccount {
+  background-image: url('../images/Sign_out_circle_duotone_line.svg');
+  background-size: 40px;
+}
