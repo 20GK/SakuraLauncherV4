@@ -2,7 +2,7 @@
 @import url('./App/styles/serverCard/mainCard.scss');
 
 *{
-  background-color: #2b2f39;
+  background-color: #2F3136;
   color: rgb(94, 94, 94);
   margin: 0;
   padding: 0;
@@ -17,7 +17,7 @@ html,body {
   display: flex;
   position: relative;
   align-items: center;
-  background-color: #23272B;
+  background-color: #202225;
   -webkit-user-select: none;
   -webkit-app-region: drag;
 }
@@ -41,10 +41,10 @@ html,body {
   height: 90px;
   width: 60px;
   border: solid;
-  border-color: #6072B7;
+  border-color: #5865F2;
   border-width: 0px 3px 3px 3px;
   border-radius: 0px 0px 15px 15px;
-  background-color: #23272B;
+  background-color: #202225;
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
@@ -180,4 +180,15 @@ html,body {
 .btnExitAccount {
   background-image: url('../images/Sign_out_circle_duotone_line.svg');
   background-size: 40px;
+}
+
+.servers {
+  display: grid;
+  position: fixed;
+  left: 15px;
+  bottom: 60px;
+  grid-template-columns: repeat(3, 300px);
+  grid-template-rows: repeat(2, 200px);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
 }

@@ -10,12 +10,13 @@ span {
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: 10px;
-  bottom: -280px;
   width: 300px;
   height: 200px;
-  background-color: #6072B7;
+  background-color: #494c53;
   border-radius: 8px;
   justify-content: space-between;
   align-items: center;
+  background-size: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
