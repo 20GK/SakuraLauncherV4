@@ -1,27 +1,42 @@
 import React, { Component } from 'react'
-import background1 from '../../../images/Industrial_Craft_2_Mod_Screenshots_6.jpg'
-import background2 from '../../../images/04.jpg'
+const { ipcRenderer } = window.require('electron')
+import bkg1 from '../../../images/bkg1.jpg'
+import bkg2 from '../../../images/bkg2.jpg'
 
 export default class CardServerA extends Component {
+  constructor(props) {
+    super(props)
+
+    this.handleOnClick = this.handleOnClick.bind(this)
+  }
+
+  handleOnClick() {
+    //ipcRenderer.send('minimizeApp')
+  }
+
   render() {
-    if(this.props.startAllow === 't') {
+    if(this.props.allow === 't') {
       this.nameBtn = 'Запустить'
       this.styleButton = 'server-card-button-start'
       this.idLaunch = 'gameLaunch1'
-    } else if (this.props.startAllow === 'f') {
+    } else {
       this.nameBtn = 'Недоступно'
       this.styleButton = 'server-card-button-close'
       this.idLaunch = 'none'
     }
 
-    if(this.props.bkg === '1') { this.bkg = background1 } 
-    else if (this.props.bkg === '2') { this.bkg = background2}
+    if (this.props.nameServer) { this.nameServer = this.props.nameServer }
+    else { this.nameServer = 'N/A' }
+
+
+    if (this.props.id === '1') { this.bkg = bkg1 }
+    else if (this.props.id === '2') { this.bkg = bkg2 }
 
     return (
       <div className="server-card-1" style={{backgroundImage: `url(${this.bkg})`, gridRow: `${this.props.row}`, gridColumn: `${this.props.column}`}}>
-        <span>{this.props.nameServer}</span>
+        <span>{this.nameServer}</span>
         <div className="server-card-footer">
-          <button className={this.styleButton} id={this.idLaunch}> {this.nameBtn} </button>
+          <button className={this.styleButton} onClick={this.handleOnClick}> {this.nameBtn} </button>
         </div>
       </div>
     )
