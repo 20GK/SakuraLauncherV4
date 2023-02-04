@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 
 //Components
 import HeaderApp   from './components/HeaderApp.jsx';
@@ -20,7 +20,7 @@ root.render(
         <div className='mainView'>
           <HeaderApp/>
             <div className='content'>
-              <BrowserRouter>
+              <HashRouter>
                 <SideBar/>
                 <div className='PageView'>
                   <Routes>
@@ -30,7 +30,7 @@ root.render(
                   </Routes>
                 </div>
                 <AccountCard/>
-              </BrowserRouter>
+              </HashRouter>
             </div>
         </div>
   </React.StrictMode>

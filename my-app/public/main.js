@@ -26,7 +26,9 @@ const createWindow = () => {
       mainWindow.loadURL(`${app.getAppPath()}\\build\\index.html`)
       console.log('[SL] Production Build')
     }
-  } launchApp();
+  } 
+  
+  launchApp();
 
   mainWindow.webContents.openDevTools();
 };
