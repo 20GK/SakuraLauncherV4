@@ -1,5 +1,8 @@
 const { app, BrowserWindow } = require('electron');
-const isDev = false
+
+//DEV MODE///////////
+const isDev = false//
+/////////////////////
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
@@ -22,15 +25,13 @@ const createWindow = () => {
     if(isDev) {
       mainWindow.loadURL('http://localhost:3000')
       console.log('[SL] Dev Build')
+      mainWindow.webContents.openDevTools();
     } else if (!isDev) {
       mainWindow.loadURL(`${app.getAppPath()}\\build\\index.html`)
       console.log('[SL] Production Build')
     }
   } 
-  
-  launchApp();
-
-  mainWindow.webContents.openDevTools();
+  launchApp()
 };
 
 app.on('ready', createWindow);

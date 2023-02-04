@@ -24,8 +24,8 @@ root.render(
                 <SideBar/>
                 <div className='PageView'>
                   <Routes>
-                    <Route exact path="/" element={<MainPage/>}/>
-                    <Route path="/servers" element={<ServersPage/>}/>
+                    <Route exact path="/" element={<ServersPage/>}/>
+                    <Route path="/servers" element={<MainPage/>}/>
                     <Route path="*" element={<NotFoundPage/>}/>
                   </Routes>
                 </div>

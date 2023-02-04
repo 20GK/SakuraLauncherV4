@@ -2,14 +2,18 @@
   "name": "my-app",
   "productName": "my-app",
   "version": "1.0.0",
-  "main": "./public/main.js",
+  "main": "./public/electron.js",
   "homepage": "./",
   "scripts": {
-    "start": "npm run build & electron .",
-    "react_start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "npm run react-build & npm run electron",
+
+    "react": "react-scripts start",
+    "react-build": "react-scripts build",
+
     "electron": "electron .",
-    "dev": "concurrently \"npm run react_start\" \"wait-on http://localhost:3000 && npm run electron\""
+    "electron-build": "electron-builder",
+
+    "build-Production": "npm run react-build && npm run electron-build"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
@@ -21,6 +25,7 @@
     "concurrently": "^7.6.0",
     "css-loader": "^6.7.3",
     "electron": "22.2.0",
+    "electron-builder": "^23.6.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.2",
@@ -38,6 +43,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
     "electron-is-dev": "^2.0.0",
+    "electron-updater": "^5.3.0",
     "express": "^4.18.2",
     "minecraft-launcher-core": "^3.16.18",
     "react": "^18.2.0",
@@ -57,5 +63,29 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "build": {
+    "appId": "react.electron",
+    "productName": "react-electron",
+    "mac":{
+      "icon": "build/logo512.png",
+      "target": "tar.gz"
+    },
+    "linux": {
+      "category": "Utils",
+      "icon": "build/icon.png",
+      "packageCategory": "utils",
+      "maintainer": "your name <your email>",
+      "asar": true,
+      "target": [
+        "deb",
+        "tar.xz"
+      ],
+      "synopsis": "Basically same as description but shorter"
+    },
+    "win": {
+      "icon": "build/icon.png",
+      "target": "nsis"
+    }
   }
 }
