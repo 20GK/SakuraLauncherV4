@@ -1,0 +1,135 @@
+.sidebar-main {
+  display: flex;
+  flex-direction: column;
+  background-color: #202225;
+  width: 75px;
+  border-radius: 0px 0px 15px 0px;
+}
+
+.sidebar-homeMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #212529;
+  text-decoration: none;
+  cursor: pointer;
+}
+.sidebar-homeLogo {
+  margin-top: 10px;
+  background-image: url('../../../images/cube.svg');
+  background-size: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 50px;
+  transition: .15s;
+  margin-left: -2px;
+}
+
+.sidebar-homeLogo:hover {
+  background-size: 35px;
+  transition: .15s;
+}
+
+.sidebar-navPills {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: auto;
+  list-style: none;
+  text-align: center;
+  flex-direction: column;
+  margin-top: 0;
+  margin-block-start: 0em;
+  margin-block-end: 1em;
+}
+
+.sidebar-navItems {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+.sidebar-Elements {
+  display: block;
+  padding: 1rem 1rem;
+  color: #0d6efd;
+  text-decoration: none;
+  transition: color .15s ease-in-out, 
+    background-color .15s  ease-in-out, 
+    border-color .15s ease-in-out;
+
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+
+  border-bottom: 2px solid #1c1c1c;
+  
+}
+
+.sidebar-Element1 {
+  background-image: url('../../../images/Data_bank.svg');
+  background-size: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 50px;
+  transition: .15s;
+}
+.sidebar-Element1:hover {
+  background-size: 45px;
+  transition: .15s;
+}
+
+
+.sidebar-Element2 {
+  background-image: url('../../../images/Group_light.svg');
+  background-size: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 50px;
+  transition: .15s;
+}
+.sidebar-Element2:hover {
+  background-size: 45px;
+  transition: .15s;
+}
+
+
+.sidebar-Element3 {
+  background-image: url('../../../images/User_alt_light.svg');
+  background-size: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 50px;
+  transition: .15s;
+}
+.sidebar-Element3:hover {
+  background-size: 45px;
+  transition: .15s;
+}
+
+
+.sidebar-Element4 {
+  background-image: url('../../../images/Setting_line_light.svg');
+  background-size: 45px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 50px;
+  transition: .15s;
+}
+.sidebar-Element4:hover {
+  background-size: 40px;
+  transition: .15s;
+}
+
+
+.sidebar-Element5 {
+  background-image: url('../../../images/Sign_out_circle_duotone_line.svg');
+  background-size: 45px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 50px;
+  transition: .15s;
+}
+.sidebar-Element5:hover {
+  background-size: 40px;
+  transition: .15s;
+}

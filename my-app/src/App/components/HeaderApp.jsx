@@ -1,39 +1,37 @@
-import React, { Component, useState } from 'react'
-const { ipcRenderer } = window.require('electron')
-import sidebar from './SideBar.jsx'
+import React, { useState, useEffect} from 'react'
+//const { ipcRenderer } = window.require('electron')
 
-export default class HeaderApp extends Component {
-  constructor(props) {
-    super(props)
+export default function HeaderApp() {
+  let [time, setTime] = useState('*Time Initialize...*')
 
-    this.handleMinimizeApp = this.handleMinimizeApp.bind(this)
-    this.handleCloseApp = this.handleCloseApp.bind(this)
-    this.handleMenuApp = this.handleMenuApp.bind(this)
+  function TimeDisplay() {
+    setTimeout(() => {
+      let currentTime = new Date()
+
+      let hour = currentTime.getHours();
+      let minute = currentTime.getMinutes();
+      let second = currentTime.getSeconds();
+
+      if(hour   < 10 ) { hour   = `0${hour}`  }
+      if(minute < 10 ) { minute = `0${minute}`}
+      if(second < 10 ) { second = `0${second}`}
+
+      setTime(`${hour}:${minute}:${second}`)
+    }, 1000);
   }
 
-  handleMinimizeApp() {
-    ipcRenderer.send('minimizeApp')
-  }
-  handleCloseApp() {
-    ipcRenderer.send('closeApp')
-  }
-  handleMenuApp() {
-    sidebar.state.height('350px')
-  }
+  useEffect(() => {
+    TimeDisplay()
+  })
 
-  render() {
-    return (
-      <div className="header">
-        <div className="header-leftmenu-container">
-          <h3>Меню</h3>
-          <button className="header-button-left" id="sidebarInteract" onClick={this.handleMenuApp}></button>
-        </div>
-        <h1 className="header-title">Sakura Project</h1>
-        <div className="header-buttons-container">
-          <button className="header-button-minimize" id="minimizeButton" onClick={this.handleMinimizeApp}></button>
-          <button className="header-button-exit" id="exitButton" onClick={this.handleCloseApp}></button>
-        </div>
+  return (
+    <div className="header">
+      <h1 className="header-title">Sakura Project | {time} </h1>
+      <h1 className="header-title-page">Список серверов</h1>
+      <div className="header-buttons-container">
+        <button className="header-button-minimize" id="minimizeButton"></button>
+        <button className="header-button-exit" id="exitButton"></button>
       </div>
-    )
-  }
+    </div>
+  )
 }

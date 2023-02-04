@@ -15,8 +15,8 @@ const createWindow = () => {
     fullscreen: false,
     fullscreenable: false,
     frame: false,
-    width: 950,
-    height: 600,
+    width: 1015,
+    height: 650,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,

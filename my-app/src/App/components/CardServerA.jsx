@@ -4,15 +4,6 @@ import bkg1 from '../../../images/bkg1.jpg'
 import bkg2 from '../../../images/bkg2.jpg'
 
 export default class CardServerA extends Component {
-  constructor(props) {
-    super(props)
-
-    this.handleOnClick = this.handleOnClick.bind(this)
-  }
-
-  handleOnClick() {
-    //ipcRenderer.send('minimizeApp')
-  }
 
   render() {
     if(this.props.allow === 't') {
