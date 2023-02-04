@@ -1,9 +1,7 @@
-import React, { useRef } from 'react'
-//const { ipcRenderer } = window.require('electron')
-import CardServerA from './CardServerA.jsx'
+import React from 'react';
+import CardServerA from './CardServerA.jsx';
 
 export default function HeaderApp() {
-  const SideBar = useRef(null)
 
   return (
     <div className="servers">
@@ -15,5 +13,5 @@ export default function HeaderApp() {
       <CardServerA allow='t' nameServer='Vanilla 1.19.3' id='1' row='2' column='3'/>
     
     </div>
-  )
-}
+  );
+};

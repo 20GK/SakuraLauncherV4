@@ -1,6 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-//const { ipcRenderer } = window.require('electron')
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function HeaderApp() {
   return (
@@ -19,7 +18,7 @@ export default function HeaderApp() {
 
         {/* third element */}
         <li className='sidebar-navItems'>
-          <Link to='/' className='sidebar-Elements' aria-current='page'>
+          <Link to='*' className='sidebar-Elements' aria-current='page'>
             <div className='sidebar-Element2'></div>
           </Link>
         </li>
@@ -40,5 +39,5 @@ export default function HeaderApp() {
       </ul>
       <div className='sidebar-account'></div>
     </div>
-  )
-}
+  );
+};

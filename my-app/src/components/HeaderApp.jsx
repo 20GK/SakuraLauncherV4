@@ -1,8 +1,7 @@
-import React, { useState, useEffect} from 'react'
-//const { ipcRenderer } = window.require('electron')
+import React, { useState, useEffect} from 'react';
 
 export default function HeaderApp() {
-  let [time, setTime] = useState('*Time Initialize...*')
+  let [time, setTime] = useState('');
 
   function TimeDisplay() {
     setTimeout(() => {
@@ -18,11 +17,11 @@ export default function HeaderApp() {
 
       setTime(`${hour}:${minute}:${second}`)
     }, 1000);
-  }
+  };
 
   useEffect(() => {
     TimeDisplay()
-  })
+  });
 
   return (
     <div className="header">
@@ -33,5 +32,5 @@ export default function HeaderApp() {
         <button className="header-button-exit" id="exitButton"></button>
       </div>
     </div>
-  )
-}
+  );
+};

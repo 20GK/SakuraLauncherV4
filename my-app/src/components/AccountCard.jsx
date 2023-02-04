@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-//const { ipcRenderer } = window.require('electron')
+import React from 'react';
 
 export default function HeaderApp() {
   return (
@@ -9,5 +8,5 @@ export default function HeaderApp() {
       </div>
     </div>
 
-  )
-}
+  );
+};

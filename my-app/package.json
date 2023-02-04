@@ -2,35 +2,33 @@
   "name": "my-app",
   "productName": "my-app",
   "version": "1.0.0",
-  "main": ".webpack/main",
+  "main": "./public/main.js",
+  "homepage": "./",
   "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "r_start": "react-scripts start"
+    "start": "npm run build & electron .",
+    "react_start": "react-scripts start",
+    "build": "react-scripts build",
+    "electron": "electron .",
+    "dev": "concurrently \"npm run react_start\" \"wait-on http://localhost:3000 && npm run electron\""
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
-    "@electron-forge/cli": "^6.0.4",
-    "@electron-forge/maker-deb": "^6.0.4",
-    "@electron-forge/maker-rpm": "^6.0.4",
-    "@electron-forge/maker-squirrel": "^6.0.4",
-    "@electron-forge/maker-zip": "^6.0.4",
-    "@electron-forge/plugin-webpack": "^6.0.4",
     "@vercel/webpack-asset-relocator-loader": "^1.7.3",
     "babel-loader": "^9.1.2",
     "clean-webpack-plugin": "^4.0.0",
+    "concurrently": "^7.6.0",
     "css-loader": "^6.7.3",
     "electron": "22.2.0",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.2",
     "node-loader": "^2.0.0",
     "sass": "^1.58.0",
     "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",
+    "wait-on": "^7.0.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1"
@@ -39,13 +37,24 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
-    "electron-squirrel-startup": "^1.0.0",
-    "file-loader": "^6.2.0",
+    "electron-is-dev": "^2.0.0",
     "minecraft-launcher-core": "^3.16.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.0",
     "react-scripts": "^5.0.1",
     "web-vitals": "^3.1.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
