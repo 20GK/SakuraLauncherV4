@@ -1,19 +1,20 @@
 {
-  "name": "my-app",
-  "productName": "my-app",
-  "version": "1.0.0",
+  "name": "sakura-launcher",
+  "productName": "SakuraLauncher",
+  "author": "SakuraProject",
+  "version": "2.3.0",
+  "description": "Minecraft Launcher",
   "main": "./public/electron.js",
+  "repository": "https://github.com/20GK/SakuraLauncherV4",
+  "publish": {
+    "provider": "github",
+    "releaseType": "release"
+  },
   "homepage": "./",
   "scripts": {
-    "start": "npm run react-build & npm run electron",
-
     "react": "react-scripts start",
-    "react-build": "react-scripts build",
-
     "electron": "electron .",
-    "electron-build": "electron-builder",
-
-    "build-Production": "npm run react-build && npm run electron-build"
+    "build-Publish": "react-scripts build && electron-builder --win -p always"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
@@ -65,9 +66,9 @@
     ]
   },
   "build": {
-    "appId": "react.electron",
-    "productName": "react-electron",
-    "mac":{
+    "appId": "sakura.launcher.com",
+    "productName": "Sakura Launcher",
+    "mac": {
       "icon": "build/logo512.png",
       "target": "tar.gz"
     },
@@ -86,6 +87,14 @@
     "win": {
       "icon": "build/icon.png",
       "target": "nsis"
-    }
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "20GK",
+        "repo": "SakuraLauncherV4",
+        "private": false
+      }
+    ]
   }
 }
