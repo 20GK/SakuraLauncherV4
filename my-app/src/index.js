@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
-const { ipcRenderer } = window.require('@electron/remote')
+import { HashRouter, Route, Routes } from 'react-router-dom';
 
 //Components
 import HeaderApp   from './components/HeaderApp.jsx';
@@ -15,21 +14,6 @@ import { NotFoundPage } from './Pages/NotFoundPage.jsx';
 //Styles
 import './styles/App.scss';
 
-let [message, setMessage] = useState()
-
-ipcRenderer.on('asynchronous-message', function(evt, message) {
-  console.log(message)
-  setMessage('CHECK UPDATES')
-})
-
-const updater = ReactDOM.createRoot(document.getElementById('root-updater'));
-updater.render(
-  <React.StrictMode>
-    <h1>{message}</h1>
-  </React.StrictMode>
-)
-
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
@@ -40,12 +24,11 @@ root.render(
                 <SideBar/>
                 <div className='PageView'>
                   <Routes>
-                    <Route exact path="/" element={<ServersPage/>}/>
-                    <Route path="/servers" element={<MainPage/>}/>
+                    <Route exact path="/servers" element={<ServersPage/>}/>
+                    <Route path="/" element={<MainPage/>}/>
                     <Route path="*" element={<NotFoundPage/>}/>
                   </Routes>
                 </div>
-                <AccountCard/>
               </HashRouter>
             </div>
         </div>

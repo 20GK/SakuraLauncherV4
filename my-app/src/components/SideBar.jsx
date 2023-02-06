@@ -25,14 +25,14 @@ export default function HeaderApp() {
 
         {/* fourth element */}
         <li className='sidebar-navItems'>
-          <Link to='/' className='sidebar-Elements' aria-current='page'>
+          <Link to='*' className='sidebar-Elements' aria-current='page'>
             <div className='sidebar-Element4'></div>
           </Link>
         </li>
 
         {/* fifth element */}
         <li className='sidebar-navItems'>
-          <Link to='/' className='sidebar-Elements' aria-current='page'>
+          <Link to='*' className='sidebar-Elements' aria-current='page'>
             <div className='sidebar-Element5'></div>
           </Link>
         </li>

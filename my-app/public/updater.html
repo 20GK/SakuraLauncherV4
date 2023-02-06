@@ -5,8 +5,14 @@
     <title>Updater</title>
   </head>
   <body>
-    <div className="root-updater">
+    <div id="root-updater">
       
     </div>
+    <script>
+      import { ipcRenderer } from 'electron'
+      ipcRenderer.on('checking-update', (msg) => {
+        document.getElementById('root-updater').innerHTML = msg
+      })
+    </script>
   </body>
 </html>
