@@ -2,7 +2,7 @@
   "name": "sakura-launcher",
   "productName": "SakuraLauncher",
   "author": "SakuraProject",
-  "version": "2.3.0",
+  "version": "1.0.5",
   "description": "Minecraft Launcher",
   "main": "./public/electron.js",
   "repository": "https://github.com/20GK/SakuraLauncherV4",
@@ -15,6 +15,10 @@
     "react": "react-scripts start",
     "electron": "electron .",
     "build-Publish": "react-scripts build && electron-builder --win -p always"
+  },
+  "browser": {
+    "path": false,
+    "stream": false
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
@@ -40,6 +44,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@electron/remote": "^2.0.9",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",

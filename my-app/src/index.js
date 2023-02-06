@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
+const { ipcRenderer } = window.require('@electron/remote')
 
 //Components
 import HeaderApp   from './components/HeaderApp.jsx';
@@ -13,6 +14,21 @@ import { NotFoundPage } from './Pages/NotFoundPage.jsx';
 
 //Styles
 import './styles/App.scss';
+
+let [message, setMessage] = useState()
+
+ipcRenderer.on('asynchronous-message', function(evt, message) {
+  console.log(message)
+  setMessage('CHECK UPDATES')
+})
+
+const updater = ReactDOM.createRoot(document.getElementById('root-updater'));
+updater.render(
+  <React.StrictMode>
+    <h1>{message}</h1>
+  </React.StrictMode>
+)
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -35,8 +51,3 @@ root.render(
         </div>
   </React.StrictMode>
 );
-
-const devMode = process.env.NODE_ENV === 'development';
-if (devMode && module && module.hot) {
-  module.hot.accept();
-};
