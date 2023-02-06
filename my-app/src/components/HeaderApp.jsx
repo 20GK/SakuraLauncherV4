@@ -2,7 +2,14 @@ import React, { useState, useEffect} from 'react';
 
 export default function HeaderApp() {
   let [time, setTime] = useState('%Time_Display%');
-  let [namePage, setNamePage] = useState('wha?')
+
+  async function handleCloseApp(){
+    await cxBridge.closeApp()
+  }
+
+  async function handleMinimizeApp(){
+    await cxBridge.minimizeApp()
+  }
 
   // Functional Time Display
   function TimeDisplay() {
@@ -32,8 +39,8 @@ export default function HeaderApp() {
       <h1 className="header-title">Sakura Project | {time} </h1>
       <h1 className="header-title-page">{process.env.REACT_APP_VERSION}</h1>
       <div className="header-buttons-container">
-        <button className="header-button-minimize" id="minimizeButton"></button>
-        <button className="header-button-exit" id="exitButton"></button>
+        <button className="header-button-minimize" id="minimizeButton" onClick={handleMinimizeApp}></button>
+        <button className="header-button-exit" id="exitButton" onClick={handleCloseApp}></button>
       </div>
     </div>
   );

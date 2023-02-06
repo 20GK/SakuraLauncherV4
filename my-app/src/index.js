@@ -5,7 +5,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 //Components
 import HeaderApp   from './components/HeaderApp.jsx';
 import SideBar     from './components/SideBar.jsx';
-import AccountCard from './components/AccountCard.jsx';
+
 //--pages
 import { MainPage } from './Pages/MainPage.jsx';
 import { ServersPage } from './Pages/ServersPage.jsx';

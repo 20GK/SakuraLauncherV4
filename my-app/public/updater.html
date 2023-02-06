@@ -2,17 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Updater</title>
+    <title>SakuraLauncher - Updater</title>
+    <link rel="stylesheet" href="./updaterStyle.css">
   </head>
   <body>
-    <div id="root-updater">
-      
+    <div class="root-updater">
+      <div class="content">
+        <h1 id="text-message">Одну секунду</h1>
+      </div>
     </div>
-    <script>
-      import { ipcRenderer } from 'electron'
-      ipcRenderer.on('checking-update', (msg) => {
-        document.getElementById('root-updater').innerHTML = msg
-      })
-    </script>
   </body>
+  <script defer src="./electron-pages/updateRenderer.js"></script>
 </html>
