@@ -2,7 +2,7 @@
   "name": "sakura-launcher",
   "productName": "SakuraLauncher",
   "author": "SakuraProject",
-  "version": "1.6.51",
+  "version": "1.6.52",
   "description": "Minecraft Launcher",
   "main": "./public/electron.js",
   "repository": "https://github.com/20GK/SakuraLauncherV4",

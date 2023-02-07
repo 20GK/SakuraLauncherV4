@@ -1,15 +1,21 @@
 import React, { useState, useEffect} from 'react';
 
 export default function HeaderApp() {
-  let [time, setTime] = useState('%Time_Display%');
+  let [time, setTime] = useState('00:00:00');
+  let [version, setVersion] = useState('...')
 
   async function handleCloseApp(){
-    await cxBridge.closeApp()
+    await window.api.closeApp()
   }
 
   async function handleMinimizeApp(){
-    await cxBridge.minimizeApp()
+    await window.api.minimizeApp()
   }
+
+  window.api.miniApp((event, data) => {
+    setVersion(data)
+  })
+
 
   // Functional Time Display
   function TimeDisplay() {
@@ -36,8 +42,7 @@ export default function HeaderApp() {
   // HTML Code
   return (
     <div className="header">
-      <h1 className="header-title">Sakura Project | {time} </h1>
-      <h1 className="header-title-page">{process.env.REACT_APP_VERSION}</h1>
+      <h1 className="header-title">Sakura Project | {time} | {version}</h1>
       <div className="header-buttons-container">
         <button className="header-button-minimize" id="minimizeButton" onClick={handleMinimizeApp}></button>
         <button className="header-button-exit" id="exitButton" onClick={handleCloseApp}></button>

@@ -1,6 +1,7 @@
 const { BrowserWindow, ipcMain, app} = require('electron');
 const isDev = require('electron-is-dev');
 const path = require('path-browserify');
+var pjson = require('../../package.json')
 
 function CreateMainWindow() {
   const mainWindow = new BrowserWindow({
@@ -18,10 +19,11 @@ function CreateMainWindow() {
   });
 
   mainWindow.setBackgroundColor('#2F3136')
+  //mainWindow.webContents.openDevTools()
   
   if(isDev) {
     console.log('[SL] Development Build | LauncherPage.js');
-    
+   
     mainWindow.loadURL('http://localhost:3000')
   } else if (!isDev) {
     console.log('[SL] Production Build | LauncherPage.js');
@@ -30,12 +32,16 @@ function CreateMainWindow() {
     mainWindow.show()
   }
 
-  ipcMain.handle('ipc-closeApp', async (event, args) => {
+  ipcMain.handle('ipc-closeApp', async () => {
     app.quit()
   })
 
-  ipcMain.handle('ipc-minimize', async (event, args) => {
+  ipcMain.handle('ipc-minimize', async () => {
     mainWindow.minimize()
+  })
+
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.webContents.send('ipc-version', `v${app.getVersion()}`)
   })
 }
 

@@ -24,6 +24,7 @@ function CreateUpdaterWindow() {
   if(isDev) {
     console.log('[SL] Development Build | UpdaterPage.js');
     updaterWindow.hide()
+    CreateMainWindow()
 
   } else if (!isDev) {
     console.log('[SL] Production Build | UpdaterPage.js');
