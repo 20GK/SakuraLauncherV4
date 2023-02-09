@@ -7,8 +7,6 @@ const { CreateMainWindow } = require('./launcherPage');
 autoUpdater.autoDownload = false
 autoUpdater.autoInstallOnAppQuit = true
 
-function Log(text){ console.log(text) }
-
 function CreateUpdaterWindow() {
   const updaterWindow = new BrowserWindow({
     title: "SakuraLauncher - Updater",
@@ -36,26 +34,22 @@ function CreateUpdaterWindow() {
   }
 
   autoUpdater.on('checking-for-update', () => {
-    Log('Checking For Update...')
     updaterWindow.webContents.send('ipc-checking-for-update', 1)
     updaterWindow.show()
   })
 
   autoUpdater.on('update-not-available', () => {
-    Log('Update Not Available. Go to Launcher!')
     updaterWindow.webContents.send('ipc-update-not-available', 1)
     updaterWindow.hide()
     CreateMainWindow()
   })
 
   autoUpdater.on('update-available', () => {
-    Log('Update Available. Wait. Start Download Update...')
     updaterWindow.webContents.send('ipc-update-available', 1)
     autoUpdater.downloadUpdate()
   })
 
   autoUpdater.on('update-downloaded', () => {
-    Log('Update Downloaded. Please Restart')
     updaterWindow.webContents.send('ipc-update-downloaded', 1)
     autoUpdater.quitAndInstall()
   })

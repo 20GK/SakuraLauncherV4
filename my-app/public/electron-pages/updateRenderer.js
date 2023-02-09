@@ -11,9 +11,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
   })
 
   ipcRenderer.on('ipc-update-available', (msg) => {
-    document.getElementById('text-message').innerHTML = 'Обновление найдено, начинаю скачивание'
+    document.getElementById('text-message').innerHTML = 'Обновление найдено, начинается скачивание...'
   })
   ipcRenderer.on('ipc-update-downloaded', (msg) => {
-    document.getElementById('text-message').innerHTML = 'Обновление загружено, перезапустите чтобы установить'
+    document.getElementById('text-message').innerHTML = 'Обновление загружено, идет перезапуск'
   })
 })
