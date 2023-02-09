@@ -17,8 +17,8 @@ function CreateMainWindow() {
     }
   });
 
-  mainWindow.setBackgroundColor('#2F3136')
-  mainWindow.webContents.openDevTools()
+  mainWindow.setBackgroundColor('#2B2E39')
+  //mainWindow.webContents.openDevTools()
   
   if(isDev) {
     console.log('[SL] Development Build | LauncherPage.js');

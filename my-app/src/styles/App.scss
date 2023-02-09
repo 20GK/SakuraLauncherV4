@@ -1,4 +1,6 @@
 @import url('./header.scss');
+@import url('./sideBar.scss');
+@import url('./content.scss');
 
 *{
   box-sizing: border-box;
@@ -14,4 +16,22 @@ body {
   background-color: #2B2E39;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
+}
+
+.mainView {
+  display: flex;
+}
+
+.left-content {
+  display: flex;
+  flex-direction: column;
+  width: 195px;
+  margin: 10px 5px 10px 10px;
+}
+
+.right-content {
+  display: flex;
+  flex-direction: column;
+  width: 830px;
+  margin: 10px 10px 10px 5px;
 }
