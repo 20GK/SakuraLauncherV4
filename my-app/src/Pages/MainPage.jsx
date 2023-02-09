@@ -1,9 +1,10 @@
 import React from 'react';
+import ServersGrid from '../components/ServersGrid.jsx';
 
 const MainPage = () => {
   return (
     <div>
-      <h1>Main Page</h1>
+      <ServersGrid/>
     </div>
   );
 };

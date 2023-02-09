@@ -6,6 +6,8 @@
 
 *{
   box-sizing: border-box;
+  overflow-x: hidden;
+  //overflow-y: hidden;
 }
 body {
   margin: 0;
@@ -28,15 +30,15 @@ body {
   align-content: space-between;
   justify-content: space-between;
   flex-direction: column;
+  background-color: #2b2d30;
 }
 
 .servers {
   display: grid;
   position: fixed;
-  left: 85px;
-  bottom: 210px;
-  grid-template-columns: repeat(3, 300px);
-  grid-template-rows: repeat(2, 200px);
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
+  left: 90px;
+  top: 35px;
+  grid-template-rows: repeat(3, 200px);
+  grid-column-gap: 20px;
+  grid-row-gap: 5px;
 }

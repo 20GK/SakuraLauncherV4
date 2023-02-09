@@ -1,9 +1,8 @@
 import React from 'react';
-import ServersGrid from '../components/ServersGrid.jsx';
 
 const ServersPage = () => {
   return (
-    <ServersGrid/>
+    <h1>Тут отобразится остальные сервера, на главной странице, только популярные сервера</h1>
   );
 };
 

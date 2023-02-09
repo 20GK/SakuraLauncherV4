@@ -1,7 +1,6 @@
 const { BrowserWindow, ipcMain, app} = require('electron');
 const isDev = require('electron-is-dev');
 const path = require('path-browserify');
-var pjson = require('../../package.json')
 
 function CreateMainWindow() {
   const mainWindow = new BrowserWindow({
@@ -9,7 +8,7 @@ function CreateMainWindow() {
     resizable: false, maximizable: false,
     fullscreen: false, fullscreenable: false,
     frame: false,
-    width: 1015, height: 650,
+    width: 1045, height: 650,
     webPreferences: { 
       nodeIntegration: true, 
       enableRemoteModule: true,
@@ -19,7 +18,7 @@ function CreateMainWindow() {
   });
 
   mainWindow.setBackgroundColor('#2F3136')
-  //mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
   
   if(isDev) {
     console.log('[SL] Development Build | LauncherPage.js');
@@ -36,12 +35,12 @@ function CreateMainWindow() {
     app.quit()
   })
 
-  ipcMain.handle('ipc-minimize', async () => {
+  ipcMain.handle('ipc-minimizeApp', async () => {
     mainWindow.minimize()
   })
 
-  mainWindow.webContents.on('did-finish-load', () => {
-    mainWindow.webContents.send('ipc-version', `v${app.getVersion()}`)
+  mainWindow.webContents.once('dom-ready', () => {
+    mainWindow.webContents.send('ipc-version', `BETA v${app.getVersion()}`)
   })
 }
 
