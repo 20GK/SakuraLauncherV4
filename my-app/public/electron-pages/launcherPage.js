@@ -5,11 +5,9 @@ const path = require('path-browserify');
 function CreateMainWindow() {
   const mainWindow = new BrowserWindow({
     title: "SakuraLauncher",
-    // resizable: false, maximizable: false,
-    // fullscreen: false, fullscreenable: false,
     frame: false,
-    minWidth: 500, minHeight: 650,
-    width: 1045, height: 650,
+    minWidth: 1000, minHeight: 630,
+    width: 1000, height: 630,
     webPreferences: { 
       nodeIntegration: true, 
       enableRemoteModule: true,
@@ -19,11 +17,11 @@ function CreateMainWindow() {
   });
 
   mainWindow.setBackgroundColor('#2B2E39')
-  mainWindow.webContents.openDevTools()
   
   if(isDev) {
     console.log('[SL] Development Build | LauncherPage.js');
-   
+    
+    mainWindow.webContents.openDevTools()
     mainWindow.loadURL('http://localhost:3000')
   } else if (!isDev) {
     console.log('[SL] Production Build | LauncherPage.js');
