@@ -30,7 +30,7 @@ export default function CardServer(props) {
   } else {styleServerCard = 'cardServer-notAllowed'}
 
   let ServerOnlineText;
-  if(props.server.online === 'off') {ServerOnlineText = 'offline'}
+  if(props.server.online === 'offline') {ServerOnlineText = 'offline'}
   else {ServerOnlineText = `${props.server.online}/100`}
 
   const [serverInfo, setServerInfo] = useState()

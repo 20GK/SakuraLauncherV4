@@ -5,9 +5,9 @@ export default function MainContent() {
 
   const [ServerInfo, setServerInfo] = useState([
     {id: 1, name: 'Vanilla', version: '1.19.3', online: 0, allow: true},
-    {id: 2, name: 'Industrial', version: '1.7.10', online: 'off', allow: false},
-    {id: 3, name: 'TechnoMagic', version: '1.12.2', online: 'off', allow: false},
-    {id: 3, name: 'Magic', version: '1.12.2', online: 'off', allow: false},
+    {id: 2, name: 'Industrial', version: '1.7.10', online: 'offline', allow: false},
+    {id: 3, name: 'TechnoMagic', version: '1.12.2', online: 'offline', allow: false},
+    {id: 3, name: 'Magic', version: '1.12.2', online: 'offline', allow: false},
   ])
 
   const [renderServerInfo, setRenderServerInfo] = useState({})
@@ -36,9 +36,16 @@ export default function MainContent() {
 
        {/* /////////////// */}
 
-      <div className='right-content'>
+      <div className='right-content' style={{opacity: `${StartButtonHide}`}}>
         <div className='HeaderServer-Content'>
-          {renderServerInfo.name}
+          <div className='HeaderServer-Content-Left'>
+            <div>Выбранный Сервер:</div>
+            <div className='NameServer-Header'>{renderServerInfo.name}</div>
+          </div>
+          <div className='HeaderServer-Content-Right'>
+            <div>Онлайн Сервера:</div>
+            <div className='OnlineServer-Header'>{renderServerInfo.online}</div>
+          </div>
         </div>
 
         <div className='Description-Content'>
