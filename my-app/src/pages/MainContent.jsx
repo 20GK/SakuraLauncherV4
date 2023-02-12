@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import CardServer from '../components/CardServer.jsx';
 
 export default function MainContent() {
@@ -12,11 +12,24 @@ export default function MainContent() {
 
   const [renderServerInfo, setRenderServerInfo] = useState({})
 
+  const [logs, setLogs] = useState([1,2,3])
+  const logArea = useRef()
+
   let StartButtonStyle, StartButtonText, StartButtonHide;
   if(renderServerInfo.allow) {
     StartButtonStyle = false; StartButtonText='Играть'; StartButtonHide='1'
   } else if (renderServerInfo.allow === undefined) { StartButtonHide='0' } 
   else { StartButtonStyle = true; StartButtonText='Недоступно'; StartButtonHide='1'}
+
+  async function launchMinecraft() {
+    await window.api.launchGame()
+  }
+
+  window.api.getLogs((event, data) => {
+    console.log([data])
+    setLogs([...logs, data])
+    //logArea?.scrollTop = logArea?.scrollHeight
+  })
 
   return (
     <>
@@ -48,11 +61,15 @@ export default function MainContent() {
           </div>
         </div>
 
-        <div className='Description-Content'>
-          {renderServerInfo.desc}
-        </div>
+        <textarea ref={logArea} className='Description-Content' readOnly={true} value={logs.join('\n')}>
+          
+        </textarea>
 
-        <button disabled={StartButtonStyle} style={{opacity: `${StartButtonHide}`}} className='StartGame-Button'>{StartButtonText}</button>
+        <button 
+        disabled={StartButtonStyle} 
+        style={{opacity: `${StartButtonHide}`}} 
+        className='StartGame-Button'
+        onClick={launchMinecraft}>{StartButtonText}</button>
       </div>
 
        {/* /////////////// */}

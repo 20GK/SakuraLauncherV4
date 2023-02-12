@@ -1,6 +1,7 @@
 const { BrowserWindow, ipcMain, app} = require('electron');
 const isDev = require('electron-is-dev');
 const path = require('path-browserify');
+const { runVersion } = require('./minecraftCore');
 
 function CreateMainWindow() {
   const mainWindow = new BrowserWindow({
@@ -36,6 +37,12 @@ function CreateMainWindow() {
 
   ipcMain.handle('ipc-minimizeApp', async () => {
     mainWindow.minimize()
+  })
+
+  ipcMain.handle('ipc-LaunchGame', async () => {
+    runVersion('1.16.5', (data)=> {
+      mainWindow.webContents.send('ipc-logsMinecraft', [data])
+    })
   })
 
   mainWindow.webContents.once('dom-ready', () => {
