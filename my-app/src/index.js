@@ -12,15 +12,18 @@ import MainContent   from './pages/MainContent.jsx';
 import './styles/App.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
-    <React.StrictMode>
+  <React.StrictMode>
+    <HashRouter>
       <HeaderApp/>
-      <HashRouter>
+      <div className='MainView'>
         <Routes>
           <Route exact path='/' element={<MainContent/>}/>
-          <Route path='/' element={<MainContent/>}/>
-          <Route path='/' element={<MainContent/>}/>
+          <Route path='/settings' element={<MainContent/>}/>
+          <Route path='/login' element={<MainContent/>}/>
         </Routes>
-      </HashRouter>
+      </div>
+    </HashRouter>
   </React.StrictMode>
 );

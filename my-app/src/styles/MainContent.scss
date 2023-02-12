@@ -24,6 +24,10 @@
   margin: 10px 10px 10px 5px;
 }
 
+a{
+  text-decoration: none;
+}
+
 
 // // // // // // // // // // // //
 
@@ -99,6 +103,14 @@
   
   background: #202224;
   border-radius: 8px;
+  
+  color: aliceblue;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 12pt;
+  text-align: left;
+  padding: 10px;
+  align-items: center;
 }
 
 .Description-Content {
@@ -110,6 +122,13 @@
   
   background: #202224;
   border-radius: 8px;
+
+  color: aliceblue;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 12pt;
+  text-align: left;
+  padding: 10px;
 }
 
 .StartGame-Button {
@@ -149,6 +168,15 @@
   color: rgb(231, 228, 227);
 }
 
+.StartGame-Button:disabled {
+  background: #8c4e46;
+  border-radius: 15px;
+  border: 3px solid;
+  border-color: #a74b3f;
+  transition: 0.3s;
+  color: rgb(231, 228, 227);
+}
+
 
 // // // // // // // // // // // //
 
@@ -169,6 +197,22 @@
   align-items: center;
 }
 
+.cardServer-notAllowed {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+
+  margin: 5px 0px 5px 0px;
+  height: 50px;
+  
+  background: linear-gradient(90deg, #ff040061 0%, #b42a0852 100%);
+  border-radius: 8px;
+  transition: 0.5s;
+  outline: none;
+  border: none;
+  align-items: center;
+}
+
 .cardServer-left {
   display: flex;
   flex-direction: column;
@@ -182,18 +226,24 @@
   justify-content: center;
 }
 
+
+.cardServer:hover {
+  background: #3f465f;
+  transition: 0.5s;
+}
 .cardServer-right {
   display: flex;
   width: 40px;
   height: 40px;
 
-  margin-left: 15px;
-  background-color: #468c6b;
-  border-radius: 5px;
+  margin-right: 10px;
+  background-size: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0px;
 }
-
-.cardServer:hover {
-  background: #3f465f;
+.cardServer:focus {
+  background: linear-gradient(90deg, #43495A 0%, #2A3E78 100%);
   transition: 0.5s;
 }
 
