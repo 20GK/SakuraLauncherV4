@@ -12,10 +12,11 @@ export default function MainContent() {
 
   const [renderServerInfo, setRenderServerInfo] = useState({})
 
-  let StartButtonStyle, StartButtonText;
+  let StartButtonStyle, StartButtonText, StartButtonHide;
   if(renderServerInfo.allow) {
-    StartButtonStyle = false; StartButtonText='Играть'
-  } else { StartButtonStyle = true; StartButtonText='Недоступно'}
+    StartButtonStyle = false; StartButtonText='Играть'; StartButtonHide='1'
+  } else if (renderServerInfo.allow === undefined) { StartButtonHide='0' } 
+  else { StartButtonStyle = true; StartButtonText='Недоступно'; StartButtonHide='1'}
 
   return (
     <>
@@ -44,7 +45,7 @@ export default function MainContent() {
           {renderServerInfo.desc}
         </div>
 
-        <button disabled={StartButtonStyle} className='StartGame-Button'>{StartButtonText}</button>
+        <button disabled={StartButtonStyle} style={{opacity: `${StartButtonHide}`}} className='StartGame-Button'>{StartButtonText}</button>
       </div>
 
        {/* /////////////// */}
