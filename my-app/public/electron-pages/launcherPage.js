@@ -1,7 +1,7 @@
-const { BrowserWindow, ipcMain, app} = require('electron');
-const isDev = require('electron-is-dev');
-const path = require('path-browserify');
-const { runVersion } = require('./minecraftCore');
+import { BrowserWindow, ipcMain, app} from 'electron'
+import isDev from 'electron-is-dev'
+import path from 'path-browserify'
+import { runVersion } from './minecraftCore'
 
 function CreateMainWindow() {
   const mainWindow = new BrowserWindow({
@@ -18,11 +18,11 @@ function CreateMainWindow() {
   });
 
   mainWindow.setBackgroundColor('#2B2E39')
+  mainWindow.webContents.openDevTools()
   
   if(isDev) {
     console.log('[SL] Development Build | LauncherPage.js');
     
-    mainWindow.webContents.openDevTools()
     mainWindow.loadURL('http://localhost:3000')
   } else if (!isDev) {
     console.log('[SL] Production Build | LauncherPage.js');
@@ -40,7 +40,7 @@ function CreateMainWindow() {
   })
 
   ipcMain.handle('ipc-LaunchGame', async () => {
-    runVersion('1.16.5', (data)=> {
+    runVersion('1.19.3', (data)=> {
       mainWindow.webContents.send('ipc-logsMinecraft', [data])
     })
   })

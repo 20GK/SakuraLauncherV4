@@ -12,8 +12,8 @@ export default function MainContent() {
 
   const [renderServerInfo, setRenderServerInfo] = useState({})
 
-  const [logs, setLogs] = useState([1,2,3])
-  const logArea = useRef()
+  const [logs, setLogs] = useState([])
+  const logArea = useRef([])
 
   let StartButtonStyle, StartButtonText, StartButtonHide;
   if(renderServerInfo.allow) {
@@ -26,9 +26,7 @@ export default function MainContent() {
   }
 
   window.api.getLogs((event, data) => {
-    console.log([data])
-    setLogs([...logs, data])
-    //logArea?.scrollTop = logArea?.scrollHeight
+    setLogs([data])
   })
 
   return (
@@ -61,7 +59,7 @@ export default function MainContent() {
           </div>
         </div>
 
-        <textarea ref={logArea} className='Description-Content' readOnly={true} value={logs.join('\n')}>
+        <textarea autoFocus={false} ref={logArea} className='Description-Content' readOnly={true} value={logs.join('\n')}>
           
         </textarea>
 

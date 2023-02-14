@@ -10,7 +10,7 @@ export default function CardServer(props) {
     srcImg = VanLogo
 
     descript = `
-    Да он работает, и че? Но ты не зайдешь :D
+    ПОЖАЛУЙСТА, НАЖИМАЙ ТОЛЬКО 1 РАЗ!!!, НЕ НАДО СПАМИТЬ! ЭТО ЭКСПЕРЕМЕНТАЛЬНЫЙ ОБРАЗ
     `
   } else if (props.server.id === 2) {
     srcImg = IndLogo

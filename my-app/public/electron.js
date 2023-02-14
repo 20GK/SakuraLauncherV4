@@ -1,7 +1,7 @@
-const { app, BrowserWindow } = require('electron');
-require('@electron/remote/main').initialize()
+import { app, BrowserWindow } from 'electron'
+import('@electron/remote/main').initialize()
 
-const { CreateUpdaterWindow } = require('./electron-pages/updaterPage');
+import { CreateUpdaterWindow } from './electron-pages/updaterPage'
 
 const createWindow = () => {
   CreateUpdaterWindow()
