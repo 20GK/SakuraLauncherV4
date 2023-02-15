@@ -4,6 +4,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 
 //Components
 import HeaderApp   from './components/HeaderApp.jsx';
+import LaunchGameContent from './pages/LaunchGameContent.jsx';
 
 //--pages
 import MainContent   from './pages/MainContent.jsx';
@@ -20,7 +21,7 @@ root.render(
       <div className='MainView'>
         <Routes>
           <Route exact path='/' element={<MainContent/>}/>
-          <Route path='/settings' element={<MainContent/>}/>
+          <Route path='/launch' element={<LaunchGameContent/>}/>
           <Route path='/login' element={<MainContent/>}/>
         </Routes>
       </div>

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import VanLogo from '../images/VanillaLogo.svg'
-import IndLogo from '../images/IndustrialLogo.svg'
-import ThMLogo from '../images/TehnoMagic.svg'
+import VanLogo from '../images/VanillaLogo.png'
+import IndLogo from '../images/Industrial.png'
+import ThMLogo from '../images/TechnoMagic.png'
 
 export default function CardServer(props) {
   let srcImg, descript, modList, allow;
@@ -10,17 +10,17 @@ export default function CardServer(props) {
     srcImg = VanLogo
 
     descript = `
-    ПОЖАЛУЙСТА, НАЖИМАЙ ТОЛЬКО 1 РАЗ!!!, НЕ НАДО СПАМИТЬ! ЭТО ЭКСПЕРЕМЕНТАЛЬНЫЙ ОБРАЗ
+    Пожалуйста нажимайте только один раз, это эксперементальный образ, и приложение ведется в режиме тестирования
     `
   } else if (props.server.id === 2) {
     srcImg = IndLogo
     descript = `
-    Почему ты это смотришь? Сервер не работает, иди гуляй
+    Пожалуйста нажимайте только один раз, это эксперементальный образ, и приложение ведется в режиме тестирования (Сервер не работает, не трогайте)
     `
   } else if (props.server.id === 3) {
     srcImg = ThMLogo
     descript = `
-    Почему ты это смотришь? Сервер не работает, иди гуляй
+    Пожалуйста нажимайте только один раз, это эксперементальный образ, и приложение ведется в режиме тестирования (Сервер не работает, не трогайте)
     `
   }
 

@@ -1,13 +1,13 @@
 import React, {useState, useEffect, useRef} from 'react';
+import { Link } from 'react-router-dom'
 import CardServer from '../components/CardServer.jsx';
 
 export default function MainContent() {
 
   const [ServerInfo, setServerInfo] = useState([
     {id: 1, name: 'Vanilla', version: '1.19.3', online: 0, allow: true},
-    {id: 2, name: 'Industrial', version: '1.7.10', online: 'offline', allow: false},
-    {id: 3, name: 'TechnoMagic', version: '1.12.2', online: 'offline', allow: false},
-    {id: 3, name: 'Magic', version: '1.12.2', online: 'offline', allow: false},
+    {id: 2, name: 'Industrial', version: '1.7.10', online: 0, allow: false},
+    {id: 3, name: 'TechnoMagic', version: '1.12.2', online: 0, allow: false},
   ])
 
   const [renderServerInfo, setRenderServerInfo] = useState({})
@@ -41,7 +41,7 @@ export default function MainContent() {
 
         <div className="account-Card">
           <div className='account-Avatar'></div>
-          <h1 className='account-Nickname'>20GK20GK20GK20GK</h1>
+          <h1 className='account-Nickname'>No Server Connection...</h1>
         </div>
       </div>
 
@@ -59,15 +59,15 @@ export default function MainContent() {
           </div>
         </div>
 
-        <textarea autoFocus={false} ref={logArea} className='Description-Content' readOnly={true} value={logs.join('\n')}>
-          
-        </textarea>
+        <div className='Description-Content'>
+          {renderServerInfo.desc}
+        </div>
 
-        <button 
+        <Link 
         disabled={StartButtonStyle} 
         style={{opacity: `${StartButtonHide}`}} 
         className='StartGame-Button'
-        onClick={launchMinecraft}>{StartButtonText}</button>
+        to={'/launch'}>{StartButtonText}</Link>
       </div>
 
        {/* /////////////// */}

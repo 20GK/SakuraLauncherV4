@@ -118,7 +118,7 @@ a{
   color: aliceblue;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 16pt;
+  font-size: 13pt;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -132,7 +132,7 @@ a{
   color: #B998FF;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 22pt;
+  font-size: 18pt;
   align-items: center;
 }
 
@@ -140,7 +140,7 @@ a{
   color: aliceblue;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 16pt;
+  font-size: 13pt;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -155,7 +155,7 @@ a{
   color: #B998FF;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 22pt;
+  font-size: 18pt;
   align-items: center;
 }
 
@@ -172,7 +172,7 @@ a{
   color: aliceblue;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 600;
-  font-size: 12pt;
+  font-size: 13pt;
   text-align: left;
   padding: 10px;
 }
@@ -251,13 +251,30 @@ a{
   margin: 5px 0px 5px 0px;
   height: 50px;
   
-  background: linear-gradient(90deg, #ff040061 0%, #b42a0852 100%);
+  background: linear-gradient(90deg, #82211f61 0%, #52320d52 100%);
   border-radius: 8px;
   transition: 0.5s;
   outline: none;
   border: none;
   align-items: center;
 }
+
+.cardServer-notAllowed:focus {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+
+  margin: 5px 0px 5px 0px;
+  height: 50px;
+  
+  background: linear-gradient(90deg, #c3211f61 0%, #73440f52 100%);
+  border-radius: 8px;
+  transition: 0.5s;
+  outline: none;
+  border: none;
+  align-items: center;
+}
+
 
 .cardServer-left {
   display: flex;
@@ -279,14 +296,13 @@ a{
 }
 .cardServer-right {
   display: flex;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
 
   margin-right: 10px;
-  background-size: auto;
+  background-size: 45px;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 0px;
 }
 .cardServer:focus {
   background: linear-gradient(90deg, #43495A 0%, #2A3E78 100%);
@@ -316,9 +332,9 @@ a{
   justify-content: center;
   align-items: center;
   display: flex;
-  color: #BFA6CB;
+  color: #787878;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
 }
@@ -327,9 +343,9 @@ a{
   justify-content: center;
   align-items: center;
   display: flex;
-  color: #ADADAD;
+  color: #787878;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
 }

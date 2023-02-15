@@ -18,9 +18,11 @@ function CreateMainWindow() {
   });
 
   mainWindow.setBackgroundColor('#2B2E39')
-  mainWindow.webContents.openDevTools()
   
   if(isDev) {
+    mainWindow.webContents.once('dom-ready', () => {
+      mainWindow.webContents.openDevTools()
+    })
     console.log('[SL] Development Build | LauncherPage.js');
     
     mainWindow.loadURL('http://localhost:3000')
