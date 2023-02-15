@@ -1,7 +1,7 @@
-import { BrowserWindow, ipcMain, app} from 'electron'
-import isDev from 'electron-is-dev'
-import path from 'path-browserify'
-import { runVersion } from './minecraftCore'
+const { BrowserWindow, ipcMain, app} = require('electron');
+const isDev = require('electron-is-dev');
+const path = require('path-browserify');
+const { runVersion } = require('./minecraftCore');
 
 function CreateMainWindow() {
   const mainWindow = new BrowserWindow({

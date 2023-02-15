@@ -1,8 +1,8 @@
-import { BrowserWindow, app } from 'electron'
-import { autoUpdater } from 'electron-updater'
-import isDev from 'electron-is-dev'
+const { BrowserWindow, app } = require('electron');
+const { autoUpdater } = require('electron-updater');
+const isDev = require('electron-is-dev')
 
-import { CreateMainWindow } from './launcherPage'
+const { CreateMainWindow } = require('./launcherPage');
 
 autoUpdater.autoDownload = false
 autoUpdater.autoInstallOnAppQuit = true

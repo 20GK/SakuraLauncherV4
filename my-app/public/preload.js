@@ -1,4 +1,4 @@
-import { ipcRenderer, contextBridge } from 'electron'
+const { ipcRenderer, contextBridge } = require('electron')
 
 window.onload = () => {
   console.log('preload loaded')

@@ -1,21 +1,25 @@
-import msmc, { wrapError } from "msmc";
-import { Client, Authenticator } from "minecraft-launcher-core";
-const launcher = new Client();//We're simple setting up mclc here...
-const auth = new msmc.auth(); //Spawn a new auth object using mojang's token
+const { Client, Authenticator } = require("minecraft-launcher-core")
+const launcher = new Client()
+const msmc = require("msmc")
+//const fetch = require('node-fetch')
 
 const runVersion = (version, callback = () => {}) => {
-  auth.on('load', console.log)
-
-  async function LaunchOpts() {
-    try{
-
-      const xbx = await auth.launch('raw')
-      const mc = await xbx.getMinecraft()
+  
+  //msmc.setFetch(fetch)
+  msmc.fastLaunch('raw',
+    (update) => {
+      //console.log('callback!!!!!')
+      //console.log(update)
+    }).then(result => {
+      if(msmc.errorCheck(result)){
+        //console.log(result.reason)
+        return
+      }
 
       let opts = {
         clientPackage: null,
 
-        authorization: mc.mclc(),
+        authorization: msmc.getMCLC().getAuth(result),
         root: './sakuraProjectGame',
 
         version: {
@@ -24,21 +28,36 @@ const runVersion = (version, callback = () => {}) => {
         },
 
         memory: {
-          max: '6G',
-          min: '4G'
-        }
+          max: '8000',
+          min: '2000'
+        },
+
+        customLaunchArgs: [
+          "-XX:+UnlockExperimentalVMOptions",
+          "-XX:+UseG1GC",
+          "-XX:G1NewSizePercent=20",
+          "-XX:G1ReservePercent=20",
+          "-XX:MaxGCPauseMillis=50",
+          "-XX:G1HeapRegionSize=32M",
+          '-Dfml.ignorePatchDiscrepancies=true',
+          '-Dfml.ignoreInvalidMinecraftCertificates=true',
+          '-XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump',
+        ],
+
+        overrides: {
+          detached: false,
+        },
       }
 
       console.log('Starting!')
       launcher.launch(opts)
 
-      launcher.on('debug', callback)
-      launcher.on('data', callback)
-    } catch (e) {
-      console.log(wrapError(e))
-    }
-  }
-  LaunchOpts()
+      //launcher.on('debug', callback)
+      launcher.on('data', console.log)
+      //launcher.on('progress', console.log)
+    }).catch(reason => {
+      console.log("We failed to log someone in because : " + reason)
+    })
 }
 
 module.exports = {runVersion}
