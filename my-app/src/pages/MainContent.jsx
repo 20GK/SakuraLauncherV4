@@ -21,8 +21,9 @@ export default function MainContent() {
   } else if (renderServerInfo.allow === undefined) { StartButtonHide='0' } 
   else { StartButtonStyle = true; StartButtonText='Недоступно'; StartButtonHide='1'}
 
-  async function launchMinecraft() {
-    await window.api.launchGame()
+  function sendDataToLaunch() {
+    //await window.api.launchGame()
+    
   }
 
   window.api.getLogs((event, data) => {
@@ -63,11 +64,9 @@ export default function MainContent() {
           {renderServerInfo.desc}
         </div>
 
-        <Link 
-        disabled={StartButtonStyle} 
-        style={{opacity: `${StartButtonHide}`}} 
-        className='StartGame-Button'
-        to={'/launch'}>{StartButtonText}</Link>
+        <Link to={'/launch'}>
+          <button disabled={StartButtonStyle} style={{opacity: `${StartButtonHide}`}} className='StartGame-Button' onClick={sendDataToLaunch}>{StartButtonText}</button>
+        </Link>
       </div>
 
        {/* /////////////// */}

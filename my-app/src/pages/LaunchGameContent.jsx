@@ -5,12 +5,15 @@ export default function LaunchGameContent() {
     <>
       <div className='LaunchGame-content'>
         <div className='Main-content'>
-          <div className='Title-Proccess'>Starting...</div>
+          <div className='Title-Proccess'>Готовим вашу игру</div>
           <div className='Logs-Proccess'>
-            <h1 className='TitleLogs-Proccess'>Logs:</h1>
-            <textarea></textarea>
+            <h1 className='TitleLogs-Proccess'>Журнал событий:</h1>
+            <div className='Title-Proccess-2'>Его читать не обязательно ;)</div>
+            <textarea readOnly={true} autoFocus={false}></textarea>
           </div>
-          <progress className='Progress-Bar'></progress>
+          <div className='Progress-Bar'>
+            <div className='Progress-Bar-Value'>50%</div>
+          </div>
         </div>
       </div>
     </>
