@@ -7,7 +7,7 @@ const runVersion = (version, callback = () => {}) => {
     clientPackage: null,
 
     authorization: Authenticator.getAuth('20GK'),
-    root: path.resolve('./sakuraProjectGame'),
+    root: path.resolve('../../../Roaming/.sakuraGame'),
 
     version: {
       number: version,
@@ -49,9 +49,10 @@ const runVersion = (version, callback = () => {}) => {
   
   launcher.launch(opts)
   //console.log(opts)
-  //launcher.on('debug', callback)
-  launcher.on('data', (e) => console.log(e))
-  launcher.on('progress', callback)
+  launcher.on('debug', callback)
+  console.log(path.resolve('./sakuraProjectGame'))
+  //launcher.on('data', (e) => console.log(e))
+  //launcher.on('progress', callback)
 
 }
 

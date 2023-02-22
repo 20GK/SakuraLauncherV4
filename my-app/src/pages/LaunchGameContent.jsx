@@ -5,18 +5,20 @@ export default function LaunchGameContent() {
 
   const locate = useLocation()
 
-  const [logs, setLogs] = useState()
+  const [version, setVersion] = useState(locate.state.version)
+  const [progressBar, setProgressBar] = useState('posts')
+  const [logs, setLogs] = useState([])
 
   window.api.getLogs((event, data) => {
-    setLogs(data)
+    setLogs([data])
   })
 
   async function launch() {
-    await window.api.launchGame({version: locate.state.version})
-    console.log({version: locate.state.version});
+    await window.api.launchGame({version: version})
   }
-
-  useEffect(() => {
+  
+  
+  useEffect(() => { 
     launch()
   }, [])
   
@@ -29,10 +31,10 @@ export default function LaunchGameContent() {
           <div className='Logs-Proccess'>
             <h1 className='TitleLogs-Proccess'>Журнал событий:</h1>
             <div className='Title-Proccess-2'></div>
-            <textarea readOnly={true} autoFocus={false} ></textarea>
+            <textarea readOnly={true} autoFocus={false} value={logs.join('\n')}></textarea>
           </div>
           <div className='Progress-Bar'>
-            <div className='Progress-Bar-Value' style={{width: `${setLogs}%`}}>50%</div>
+            <div className='Progress-Bar-Value' style={{width: `50%`}}>{version}</div>
           </div>
         </div>
       </div>

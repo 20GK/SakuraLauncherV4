@@ -33,8 +33,7 @@ export default function HeaderApp() {
       setTime(`${hour}:${minute}:${second}`)
     }, 1000);
   };
-
-  // Use Effect make don't duplicate run, only one time run
+  
   useEffect(() => {
     TimeDisplay()
   });
