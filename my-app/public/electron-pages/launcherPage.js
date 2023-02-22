@@ -28,7 +28,6 @@ function CreateMainWindow() {
     mainWindow.loadURL('http://localhost:3000')
   } else if (!isDev) {
     console.log('[SL] Production Build | LauncherPage.js');
-
     mainWindow.loadURL(`${app.getAppPath()}\\build\\index.html`)
     mainWindow.show()
   }
@@ -46,6 +45,7 @@ function CreateMainWindow() {
       runVersion(args.version, (data)=> {
         mainWindow.webContents.send('ipc-logsMinecraft', [data])
       })
+      console.log(args.version)
     })
   })
 

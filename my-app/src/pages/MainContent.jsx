@@ -22,7 +22,8 @@ export default function MainContent() {
   else { StartButtonStyle = true; StartButtonText='Недоступно'; StartButtonHide='1'}
 
   function sendDataToLaunch() {
-    navigate('/launch', {state:{server: renderServerInfo.name, version: renderServerInfo.version}})
+    console.log(renderServerInfo.version);
+    navigate('/launch', {state:{version: renderServerInfo.version}})
   }
 
   return (

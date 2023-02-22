@@ -1,24 +1,23 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 export default function LaunchGameContent() {
 
   const locate = useLocation()
 
-  const [version, setVersion] = useState(locate.state.version)
-  const [progressBar, setProgressBar] = useState('posts')
+  const [versionGame, setVersionGame] = useState()
   const [logs, setLogs] = useState([])
 
   window.api.getLogs((event, data) => {
     setLogs([data])
   })
 
-  async function launch() {
-    await window.api.launchGame({version: version})
-  }
-  
-  
   useEffect(() => { 
+    async function launch() {
+      setVersionGame(locate.state.version)
+      console.log(versionGame)
+      await window.api.launchGame({version: versionGame})
+    }
     launch()
   }, [])
   
@@ -34,7 +33,7 @@ export default function LaunchGameContent() {
             <textarea readOnly={true} autoFocus={false} value={logs.join('\n')}></textarea>
           </div>
           <div className='Progress-Bar'>
-            <div className='Progress-Bar-Value' style={{width: `50%`}}>{version}</div>
+            <div className='Progress-Bar-Value' style={{width: `50%`}}>Че за хуйня</div>
           </div>
         </div>
       </div>

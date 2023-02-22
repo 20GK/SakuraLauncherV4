@@ -14,6 +14,11 @@ const runVersion = (version, callback = () => {}) => {
       type: 'release'
     },
 
+    server: {
+      host: '135.181.126.156',
+      port: '25700'
+    },
+
     window: {
       width: '1000',
       height: '630',
@@ -48,7 +53,7 @@ const runVersion = (version, callback = () => {}) => {
   console.log('Starting!')
   
   launcher.launch(opts)
-  //console.log(opts)
+  console.log(opts)
   launcher.on('debug', callback)
   console.log(path.resolve('./sakuraProjectGame'))
   //launcher.on('data', (e) => console.log(e))
