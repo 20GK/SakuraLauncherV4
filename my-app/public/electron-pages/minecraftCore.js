@@ -1,25 +1,17 @@
 const { Client, Authenticator } = require("minecraft-launcher-core")
 const launcher = new Client()
-const msmc = require("msmc")
-//const fetch = require('node-fetch')
+const path = require('path')
 
 const runVersion = (version, callback = () => {}) => {
   let opts = {
     clientPackage: null,
 
     authorization: Authenticator.getAuth('20GK'),
-    root: './sakuraProjectGame',
-
-    os: 'windows',
+    root: path.resolve('./sakuraProjectGame'),
 
     version: {
       number: version,
       type: 'release'
-    },
-
-    server: {
-      host: '135.181.126.156',
-      port: '25700'
     },
 
     window: {
@@ -54,11 +46,12 @@ const runVersion = (version, callback = () => {}) => {
   }
 
   console.log('Starting!')
+  
   launcher.launch(opts)
-
+  //console.log(opts)
   //launcher.on('debug', callback)
-  launcher.on('data', console.log)
-  //launcher.on('progress', console.log)
+  launcher.on('data', (e) => console.log(e))
+  launcher.on('progress', callback)
 
 }
 

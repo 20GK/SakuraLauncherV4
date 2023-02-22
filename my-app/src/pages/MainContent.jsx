@@ -1,19 +1,19 @@
-import React, {useState, useEffect, useRef} from 'react';
-import { Link } from 'react-router-dom'
+import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom'
 import CardServer from '../components/CardServer.jsx';
 
 export default function MainContent() {
 
+  
   const [ServerInfo, setServerInfo] = useState([
     {id: 1, name: 'Vanilla', version: '1.19.3', online: 0, allow: true},
     {id: 2, name: 'Industrial', version: '1.7.10', online: 0, allow: false},
     {id: 3, name: 'TechnoMagic', version: '1.12.2', online: 0, allow: false},
   ])
-
+  
   const [renderServerInfo, setRenderServerInfo] = useState({})
-
-  const [logs, setLogs] = useState([])
-  const logArea = useRef([])
+  
+  const navigate = useNavigate();
 
   let StartButtonStyle, StartButtonText, StartButtonHide;
   if(renderServerInfo.allow) {
@@ -22,13 +22,8 @@ export default function MainContent() {
   else { StartButtonStyle = true; StartButtonText='Недоступно'; StartButtonHide='1'}
 
   function sendDataToLaunch() {
-    //await window.api.launchGame()
-    
+    navigate('/launch', {state:{server: renderServerInfo.name, version: renderServerInfo.version}})
   }
-
-  window.api.getLogs((event, data) => {
-    setLogs([data])
-  })
 
   return (
     <>
@@ -64,9 +59,7 @@ export default function MainContent() {
           {renderServerInfo.desc}
         </div>
 
-        <Link to={'/launch'}>
-          <button disabled={StartButtonStyle} style={{opacity: `${StartButtonHide}`}} className='StartGame-Button' onClick={sendDataToLaunch}>{StartButtonText}</button>
-        </Link>
+        <button disabled={StartButtonStyle} style={{opacity: `${StartButtonHide}`}} className='StartGame-Button' onClick={()=>{sendDataToLaunch()}}>{StartButtonText}</button>
       </div>
 
        {/* /////////////// */}

@@ -41,9 +41,9 @@ function CreateMainWindow() {
     mainWindow.minimize()
   })
 
-  ipcMain.handle('ipc-LaunchGame', async () => {
-    runVersion('1.19.3', (data)=> {
-      mainWindow.webContents.send('ipc-logsMinecraft', [data])
+  ipcMain.handle('ipc-LaunchGame', async (event, args) => {
+    runVersion(args.version, ()=> {
+      //mainWindow.webContents.send('ipc-logsMinecraft', [data])
     })
   })
 
