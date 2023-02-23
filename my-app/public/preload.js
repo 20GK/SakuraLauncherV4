@@ -2,13 +2,32 @@ const { ipcRenderer, contextBridge } = require('electron')
 
 window.onload = () => {
   console.log('preload loaded')
-  const WINDOW_API = {
+
+  contextBridge.exposeInMainWorld('api', {
     closeApp: () => ipcRenderer.invoke('ipc-closeApp'),
     minimizeApp: () => ipcRenderer.invoke('ipc-minimizeApp'),
-    miniApp: (callback) => ipcRenderer.on('ipc-version', (callback)),
-    getLogs: (callback) => ipcRenderer.on('ipc-logsMinecraft', (callback)),
-    launchGame: (args) => ipcRenderer.invoke('ipc-LaunchGame', args),
-  }
-  
-  contextBridge.exposeInMainWorld('api', WINDOW_API)
+    getVersionApp: () => ipcRenderer.invoke('ipc-versionApp')
+
+
+
+    // closeApp: (channel, listener) => {
+    //   ipcRenderer.invoke(channel, (event, args) => listener(args))
+    // },
+
+    // minimizeApp: (channel, listener) => {
+    //   ipcRenderer.invoke(channel, (event, args) => listener(args))
+    // },
+
+    // getVervionApp: (channel, listener) => {
+    //   ipcRenderer.on(channel, (event, args) => listener(args))
+    // },
+
+    // getGameLogs: (channel, listener) => {
+    //   ipcRenderer.on(channel, (event, args) => listener(args))
+    // },
+
+    // launchGame: (channel, listener) => {
+    //   ipcRenderer.on(channel, (event, args) => listener(args))
+    // }
+  })
 }

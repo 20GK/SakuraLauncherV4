@@ -32,14 +32,7 @@ function CreateMainWindow() {
     mainWindow.show()
   }
 
-  ipcMain.handle('ipc-closeApp', async () => {
-    app.quit()
-  })
-
-  ipcMain.handle('ipc-minimizeApp', async () => {
-    mainWindow.minimize()
-  })
-
+  
   mainWindow.webContents.once('dom-ready', () => {
     ipcMain.handle('ipc-LaunchGame', async (args) => {
       runVersion(args.version, (data)=> {
@@ -47,11 +40,21 @@ function CreateMainWindow() {
       })
       console.log(args.version)
     })
+    
+    ipcMain.handle('ipc-closeApp', async () => {
+      app.quit()
+    })
+  
+    ipcMain.handle('ipc-minimizeApp', async () => {
+      mainWindow.minimize()
+    })
+    
+    ipcMain.handle('ipc-versionApp', () => {
+      const versionApp = `BETA v${app.getVersion()}`
+      return versionApp
+    })
   })
 
-  mainWindow.webContents.once('dom-ready', () => {
-    mainWindow.webContents.send('ipc-version', `BETA v${app.getVersion()}`)
-  })
 }
 
 

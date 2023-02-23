@@ -1,8 +1,8 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function HeaderApp() {
-  let [time, setTime] = useState('00:00:00');
-  let [version, setVersion] = useState('...')
+  const [time, setTime] = useState('00:00:00')
+  const [version, setVersion] = useState('v0.0.00')
 
   async function handleCloseApp(){
     await window.api.closeApp()
@@ -12,29 +12,31 @@ export default function HeaderApp() {
     await window.api.minimizeApp()
   }
 
-  window.api.miniApp((event, data) => {
-    setVersion(data)
-  })
+  useEffect(() => {
+    async function getVersion() {
+      const appVersion = await window.api.getVersionApp();
+      setVersion(appVersion);
+    }
+    getVersion();
+  }, [])
 
-
-  // Functional Time Display
-  function TimeDisplay() {
-    setTimeout(() => {
-      let currentTime = new Date()
-
-      let hour = currentTime.getHours();
-      let minute = currentTime.getMinutes();
-      let second = currentTime.getSeconds();
-
-      if(hour   < 10 ) { hour   = `0${hour}`  }
-      if(minute < 10 ) { minute = `0${minute}`}
-      if(second < 10 ) { second = `0${second}`}
-
-      setTime(`${hour}:${minute}:${second}`)
-    }, 1000);
-  };
   
   useEffect(() => {
+    async function TimeDisplay() {
+      setTimeout(() => {
+        let currentTime = new Date()
+  
+        let hour = currentTime.getHours();
+        let minute = currentTime.getMinutes();
+        let second = currentTime.getSeconds();
+  
+        if(hour   < 10 ) { hour   = `0${hour}`  }
+        if(minute < 10 ) { minute = `0${minute}`}
+        if(second < 10 ) { second = `0${second}`}
+  
+        setTime(`${hour}:${minute}:${second}`)
+      }, 1000);
+    };
     TimeDisplay()
   });
 
