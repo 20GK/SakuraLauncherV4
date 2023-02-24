@@ -5,21 +5,23 @@ export default function LaunchGameContent() {
 
   const locate = useLocation()
 
-  const [versionGame, setVersionGame] = useState()
   const [logs, setLogs] = useState([])
 
-  window.api.getLogs((event, data) => {
-    setLogs([data])
-  })
-
-  useEffect(() => { 
+  useEffect(() => {    
     async function launch() {
-      setVersionGame(locate.state.version)
-      console.log(versionGame)
-      await window.api.launchGame({version: versionGame})
+      if (locate.state.version != undefined) {
+        const versionGame = locate.state.version
+        window.api.sendLaunchGame({versionGame: versionGame})
+      }
     }
+
+    ////
     launch()
   }, [])
+
+  window.api.getLogsGame((event, data) => {
+    setLogs([data])
+  })
   
 
   return (
@@ -28,12 +30,11 @@ export default function LaunchGameContent() {
         <div className='Main-content'>
           <div className='Title-Proccess'>Готовим вашу игру</div>
           <div className='Logs-Proccess'>
-            <h1 className='TitleLogs-Proccess'>Журнал событий:</h1>
             <div className='Title-Proccess-2'></div>
             <textarea readOnly={true} autoFocus={false} value={logs.join('\n')}></textarea>
           </div>
           <div className='Progress-Bar'>
-            <div className='Progress-Bar-Value' style={{width: `50%`}}>Че за хуйня</div>
+            <div className='Progress-Bar-Value' style={{width: `50%`}}>50%</div>
           </div>
         </div>
       </div>

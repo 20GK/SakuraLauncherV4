@@ -34,13 +34,13 @@ function CreateMainWindow() {
 
   
   mainWindow.webContents.once('dom-ready', () => {
-    ipcMain.handle('ipc-LaunchGame', async (args) => {
-      runVersion(args.version, (data)=> {
-        mainWindow.webContents.send('ipc-logsMinecraft', [data])
+
+    ipcMain.handle('ipc-launchGame', (event, args) => {
+      runVersion(args.versionGame, isDev, (data) => { 
+        mainWindow.webContents.send('ipc-getGameLogs', [data])
       })
-      console.log(args.version)
     })
-    
+
     ipcMain.handle('ipc-closeApp', async () => {
       app.quit()
     })
@@ -49,12 +49,11 @@ function CreateMainWindow() {
       mainWindow.minimize()
     })
     
-    ipcMain.handle('ipc-versionApp', () => {
-      const versionApp = `BETA v${app.getVersion()}`
-      return versionApp
+    ipcMain.handle('ipc-getVersionApp', async () => {
+      return `BETA v${app.getVersion()}`
     })
+    
   })
-
 }
 
 

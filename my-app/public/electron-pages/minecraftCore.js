@@ -2,12 +2,12 @@ const { Client, Authenticator } = require("minecraft-launcher-core")
 const launcher = new Client()
 const path = require('path')
 
-const runVersion = (version, callback = () => {}) => {
+const runVersion = (version, isDev, callback = () => {}) => {
   let opts = {
     clientPackage: null,
 
     authorization: Authenticator.getAuth('20GK'),
-    root: path.resolve('../../../Roaming/.sakuraGame'),
+    root: isDev ? path.resolve('./.sakuraGame') : path.resolve('../../../Roaming/.sakuraGame'),
 
     version: {
       number: version,
@@ -53,12 +53,7 @@ const runVersion = (version, callback = () => {}) => {
   console.log('Starting!')
   
   launcher.launch(opts)
-  console.log(opts)
   launcher.on('debug', callback)
-  console.log(path.resolve('./sakuraProjectGame'))
-  //launcher.on('data', (e) => console.log(e))
-  //launcher.on('progress', callback)
-
 }
 
 module.exports = {runVersion}
