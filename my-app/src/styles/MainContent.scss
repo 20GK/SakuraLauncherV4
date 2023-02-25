@@ -53,6 +53,8 @@ a{
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  border: none;
+  outline: none;
 
   width: 100%;
   height: 100%;
@@ -61,6 +63,13 @@ a{
 
   background: #202224;
   border-radius: 8px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.account-Card:hover {
+  background: #262828;
+  transition: 0.3s;
 }
 
 .account-Avatar {
@@ -212,9 +221,11 @@ a{
   border-color: rgb(31, 88, 63);
   transition: 0.3s;
   color: rgb(231, 228, 227);
+  cursor: pointer;
 }
 
 .StartGame-Button:disabled {
+  cursor: default;
   background: #8c4e46;
   border-radius: 15px;
   border: 3px solid;
@@ -241,11 +252,13 @@ a{
   outline: none;
   border: none;
   align-items: center;
+  cursor: pointer;
 }
 
 .cardServer-notAllowed {
   display: flex;
   flex-direction: row;
+  cursor: pointer;
   width: 90%;
 
   margin: 5px 0px 5px 0px;

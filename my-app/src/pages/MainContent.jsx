@@ -1,8 +1,12 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom'
 import CardServer from '../components/CardServer.jsx';
+import ModalMaster from '../components/ModalMaster.jsx';
 
 export default function MainContent() {
+
+  const rootRef = document.getElementById('root')
+  const modalRootRef = document.getElementById('modal-root')
 
   
   const [ServerInfo, setServerInfo] = useState([
@@ -12,6 +16,7 @@ export default function MainContent() {
   ])
   
   const [renderServerInfo, setRenderServerInfo] = useState({})
+  const [showAccount, setShowAccount] = useState(false)
   
   const navigate = useNavigate();
 
@@ -25,6 +30,21 @@ export default function MainContent() {
     navigate('/launch', {state:{version: renderServerInfo.version}})
   }
 
+  function openAccountModal() {
+    rootRef.style.zIndex = '-100'
+    modalRootRef.style.zIndex = '100'
+    modalRootRef.style.backgroundColor = 'rgba(0, 0, 0, .500)'
+    modalRootRef.style.backdropFilter = 'blur(1px)'
+    setShowAccount(true)
+  }
+
+  function closeAccountModal () {
+    rootRef.style.zIndex = '100'
+    modalRootRef.style.zIndex = '-100'
+    modalRootRef.style.backgroundColor = 'rgba(0, 0, 0, 0)'
+    setShowAccount(false)
+  }
+
   return (
     <>
        {/* /////////////// */}
@@ -35,10 +55,18 @@ export default function MainContent() {
           )}
         </div>
 
-        <div className="account-Card">
+        <button className="account-Card" onClick={openAccountModal}>
           <div className='account-Avatar'></div>
-          <h1 className='account-Nickname'>No Server Connection...</h1>
-        </div>
+          <h1 className='account-Nickname'>20GK</h1>
+        </button>
+        {showAccount && 
+          <ModalMaster 
+            onClose={closeAccountModal} 
+            title='Не доступно :(' 
+            content='Данная функция сейчас не доступна. Вы можете попробовать после выхода нового обновления. Извините за предоставленные неудобства'
+            buttonText='Закрыть'
+          />
+        }
       </div>
 
        {/* /////////////// */}

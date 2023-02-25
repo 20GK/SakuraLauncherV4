@@ -1,12 +1,14 @@
 @import url('./header.scss');
 @import url('./MainContent.scss');
 @import url('./LaunchGameView.scss');
+@import url('./modal.scss');
 
 *{
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: hidden;
 }
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
