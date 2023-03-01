@@ -19,8 +19,30 @@ export default function LaunchGameContent() {
     launch()
   }, [])
 
+  async function goCloseApp() {
+    await window.api.closeApp()
+  }
+
   window.api.getLogsGame((event, data) => {
-    setLogs([data])
+    console.log(data)
+    if(data[0].includes('[MCLC]: Using Java version')){
+      setLogs(['Так-с, я нашел Java'])
+    } else if(data[0].includes('[MCLC]: Collected class paths')){
+      setLogs(['Ищем классы и пути...'])
+    } else if(data[0].includes('[MCLC]: Using ; to separate class paths')){
+      setLogs(['Исправляем и загружаем нужные библиотеки'])
+    } else if(data[0].includes('[MCLC]: Attempting to download assets')){
+      setLogs(['Попытка загрузки ассетов'])
+    } else if(data[0].includes('[MCLC]: Downloaded assets')){
+      setLogs(['Ура, загружаем ассеты'])
+    } else if(data[0].includes('[MCLC]: Set launch options')){
+      setLogs(['Выставляем нужные шестеренки для запуска'])
+    } else if(data[0].includes('[MCLC]: Launching with arguments')){
+      setLogs(['Заводим двигатель, игра запускается!'])
+      setTimeout(() => {
+        goCloseApp()
+      }, 3000);
+    }
   })
   
 

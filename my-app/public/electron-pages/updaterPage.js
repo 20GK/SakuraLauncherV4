@@ -22,6 +22,7 @@ function CreateUpdaterWindow() {
   if(isDev) {
     console.log('[SL] Development Build | UpdaterPage.js');
     CreateMainWindow()
+    updaterWindow.hide()
     
   } else if (!isDev) {
     updaterWindow.show()
