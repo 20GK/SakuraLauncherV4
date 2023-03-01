@@ -27,6 +27,7 @@
   background-size: 154px;
   background-repeat: no-repeat;
   background-position: center;
+  animation: scale-up-center 0.4s cubic-bezier(0.445, 0.050, 0.550, 0.950) infinite alternate both;
 }
 
 h1 {
@@ -35,4 +36,17 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
   color: aliceblue;
   background-color: transparent;
+}
+
+@keyframes scale-up-center {
+  0% {
+    transform: scale(0.95);
+    filter: invert(85%);
+    background-color: transparent;
+  }
+  100% {
+    transform: scale(1);
+    filter: invert(90%);
+    background-color: transparent;
+  }
 }

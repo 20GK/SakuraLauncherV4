@@ -22,10 +22,10 @@ function CreateUpdaterWindow() {
   if(isDev) {
     console.log('[SL] Development Build | UpdaterPage.js');
     CreateMainWindow()
-    updaterWindow.loadURL(`${app.getAppPath()}\\build\\updater.html`)
     
   } else if (!isDev) {
     updaterWindow.show()
+    updaterWindow.loadURL(`${app.getAppPath()}\\build\\updater.html`)
     console.log('[SL] Production Build | UpdaterPage.js');
 
     autoUpdater.checkForUpdates()
