@@ -21,14 +21,13 @@ function CreateUpdaterWindow() {
   
   if(isDev) {
     console.log('[SL] Development Build | UpdaterPage.js');
-    updaterWindow.hide()
     CreateMainWindow()
-
-  } else if (!isDev) {
-    console.log('[SL] Production Build | UpdaterPage.js');
-    updaterWindow.show()
-
     updaterWindow.loadURL(`${app.getAppPath()}\\build\\updater.html`)
+    
+  } else if (!isDev) {
+    updaterWindow.show()
+    console.log('[SL] Production Build | UpdaterPage.js');
+
     autoUpdater.checkForUpdates()
     updaterWindow.webContents.send('ipc-test-connect', 1)
   }

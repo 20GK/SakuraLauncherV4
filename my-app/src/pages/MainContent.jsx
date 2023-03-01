@@ -50,8 +50,11 @@ export default function MainContent() {
        {/* /////////////// */}
       <div className='left-content'>
         <div className="sideBar">
-          {ServerInfo.map(post => 
-            <CardServer server={post} updateData={setRenderServerInfo}/>
+          {ServerInfo.map((post) => 
+            <CardServer 
+            server={post} 
+            updateData={setRenderServerInfo}
+            key={post.id}/>
           )}
         </div>
 
