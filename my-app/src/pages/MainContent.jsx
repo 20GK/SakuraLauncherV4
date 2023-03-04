@@ -1,24 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom'
 import CardServer from '../components/CardServer.jsx';
-import ModalMaster from '../components/ModalMaster.jsx';
+import jsonServer from '../data/serversList.json'
 
 export default function MainContent() {
-
-  const rootRef = document.getElementById('root')
-  const modalRootRef = document.getElementById('modal-root')
-
+  const navigate = useNavigate();
+  function sendDataToLaunch() { navigate('/launch', {state:{version: renderServerInfo.version}})}
   
-  const [ServerInfo, setServerInfo] = useState([
-    {id: 1, name: 'Vanilla', version: '1.19.3', online: 0, allow: true},
-    {id: 2, name: 'Industrial', version: '1.7.10', online: 0, allow: false},
-    {id: 3, name: 'TechnoMagic', version: '1.12.2', online: 0, allow: false},
-  ])
-  
+  const [ServerInfo, setServerInfo] = useState(JSON.parse(localStorage.getItem('serverInfo')) || {})
   const [renderServerInfo, setRenderServerInfo] = useState({})
   const [showAccount, setShowAccount] = useState(false)
   
-  const navigate = useNavigate();
 
   let StartButtonStyle, StartButtonText, StartButtonHide;
   if(renderServerInfo.allow) {
@@ -26,50 +18,42 @@ export default function MainContent() {
   } else if (renderServerInfo.allow === undefined) { StartButtonHide='0' } 
   else { StartButtonStyle = true; StartButtonText='Недоступно'; StartButtonHide='1'}
 
-  function sendDataToLaunch() {
-    navigate('/launch', {state:{version: renderServerInfo.version}})
-  }
+  useEffect(() => {
+    const rawImport = JSON.stringify(jsonServer.ServerList)
+    if(localStorage.getItem('serverInfo') === null || undefined){
+      localStorage.setItem('serverInfo', rawImport)
+      window.location.reload()
+      console.log('created new local storage')
+    }
+  }, [])
 
-  function openAccountModal() {
-    rootRef.style.zIndex = '-100'
-    modalRootRef.style.zIndex = '100'
-    modalRootRef.style.backgroundColor = 'rgba(0, 0, 0, .500)'
-    modalRootRef.style.backdropFilter = 'blur(1px)'
-    setShowAccount(true)
-  }
-
-  function closeAccountModal () {
-    rootRef.style.zIndex = '100'
-    modalRootRef.style.zIndex = '-100'
-    modalRootRef.style.backgroundColor = 'rgba(0, 0, 0, 0)'
-    setShowAccount(false)
-  }
+  // useEffect(() => {
+  //   window.api.responseServerStatus((event, data) => {
+  //     let obj = ServerInfo
+  //     obj.Vanilla.serverStatus = data
+  //     setServerInfo(obj)
+  //   })
+  // }, [renderServerInfo])
+  
 
   return (
     <>
        {/* /////////////// */}
       <div className='left-content'>
         <div className="sideBar">
-          {ServerInfo.map((post) => 
+          {Object.keys(ServerInfo).map((key) => 
             <CardServer 
-            server={post} 
+            key={ServerInfo[key].id}
+            object={ServerInfo[key]} 
             updateData={setRenderServerInfo}
-            key={post.id}/>
+            />
           )}
         </div>
 
-        <button className="account-Card" onClick={openAccountModal}>
+        <button className="account-Card">
           <div className='account-Avatar'></div>
           <h1 className='account-Nickname'>20GK</h1>
         </button>
-        {showAccount && 
-          <ModalMaster 
-            onClose={closeAccountModal} 
-            title='Не доступно :(' 
-            content='Данная функция сейчас не доступна. Вы можете попробовать после выхода нового обновления. Извините за предоставленные неудобства'
-            buttonText='Закрыть'
-          />
-        }
       </div>
 
        {/* /////////////// */}

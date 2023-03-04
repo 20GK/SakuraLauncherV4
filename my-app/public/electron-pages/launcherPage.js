@@ -1,7 +1,8 @@
 const { BrowserWindow, ipcMain, app} = require('electron');
 const isDev = require('electron-is-dev');
 const path = require('path-browserify');
-const { runVersion } = require('./minecraftCore');
+const { getStatus } = require('../js/getStatusServer');
+const { runVersion } = require('../js/minecraftCore');
 
 function CreateMainWindow() {
   const mainWindow = new BrowserWindow({
@@ -31,7 +32,6 @@ function CreateMainWindow() {
     mainWindow.loadURL(`${app.getAppPath()}\\build\\index.html`)
     mainWindow.show()
   }
-
   
   mainWindow.webContents.once('dom-ready', () => {
 
@@ -52,8 +52,14 @@ function CreateMainWindow() {
     ipcMain.handle('ipc-getVersionApp', async () => {
       return `BETA v${app.getVersion()}`
     })
-    
   })
+
+  function statusFNC() {
+    getStatus('135.181.126.156', 25700)
+    .then(status => mainWindow.webContents.send('ipc-responseStatus', status))
+  }
+
+  setInterval(statusFNC, 2000);
 }
 
 

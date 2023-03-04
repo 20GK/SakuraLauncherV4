@@ -1,50 +1,35 @@
 import React, {useEffect, useState} from 'react';
-import VanLogo from '../images/VanillaLogo.png'
-import IndLogo from '../images/Industrial.png'
-import ThMLogo from '../images/TechnoMagic.png'
+
+//Images
+import vanillaImage from '../images/VanillaLogo.png';
+import industrialImage from '../images/Industrial.png';
+import technoMagicImage from '../images/TechnoMagic.png';
+
+const images = {
+  1: vanillaImage,
+  2: industrialImage,
+  3: technoMagicImage,
+};
 
 export default function CardServer(props) {
-  let srcImg, descript, modList, allow;
-
-  if(props.server.id === 1) {
-    srcImg = VanLogo
-
-    descript = `
-    Пожалуйста нажимайте только один раз, это эксперементальный образ, и приложение ведется в режиме тестирования
-    `
-  } else if (props.server.id === 2) {
-    srcImg = IndLogo
-    descript = `
-    Пожалуйста нажимайте только один раз, это эксперементальный образ, и приложение ведется в режиме тестирования (Сервер не работает, не трогайте)
-    `
-  } else if (props.server.id === 3) {
-    srcImg = ThMLogo
-    descript = `
-    Пожалуйста нажимайте только один раз, это эксперементальный образ, и приложение ведется в режиме тестирования (Сервер не работает, не трогайте)
-    `
-  }
-
-  let styleServerCard;
-  if(props.server.allow) {
-    styleServerCard = 'cardServer'
-  } else {styleServerCard = 'cardServer-notAllowed'}
-
-  let ServerOnlineText;
-  if(props.server.online === 'offline') {ServerOnlineText = 'offline'}
-  else {ServerOnlineText = `${props.server.online}/100`}
-
   const [serverInfo, setServerInfo] = useState()
+  const imageURL = images[props.object.id]
+  let styleServerCard;
+  
+
+  if(props.object.serverStatus) styleServerCard = 'cardServer'
+  else styleServerCard = 'cardServer-notAllowed'
+
 
   useEffect(() => {
     setServerInfo({
-      name: props.server.name,
-      version: props.server.version,
-      online: props.server.online,
-      desc: descript,
-      descModList: modList,
-      allow: props.server.allow,
+      name: props.object.nameServer,
+      version: props.object.gameVersion,
+      desc: props.object.description,
+      online: props.object.serverOnline,
+      allow: props.object.serverStatus,
     })
-  }, [props.server.id]);
+  }, [props.object.id]);
 
   const renderServerPreview = (e) => {
     e.preventDefault()
@@ -53,14 +38,14 @@ export default function CardServer(props) {
 
   return (
     <button onClick={renderServerPreview} className={styleServerCard}>
-      <div className='cardServer-right' style={{backgroundImage: `url(${srcImg})`}}></div>
+      <div className='cardServer-right' style={{backgroundImage: `url(${imageURL})`}}></div>
       <div className='cardServer-left'>
         <div className='cardServer-NameServer-Container'>
-          <h1 className='cardServer-NameServer'>{props.server.name}</h1>
+          <h1 className='cardServer-NameServer'>{props.object.nameServer}</h1>
         </div>
         <div className='cardServer-left-Information'>
-          <h1 className='cardServer-GameVersion'>{props.server.version}</h1>
-          <h1 className='cardServer-GameOnline'>{ServerOnlineText}</h1>
+          <h1 className='cardServer-GameVersion'>{props.object.gameVersion}</h1>
+          <h1 className='cardServer-GameOnline'>{props.object.serverOnline}/{props.object.serverOnlineMax}</h1>
         </div>
       </div>
     </button>

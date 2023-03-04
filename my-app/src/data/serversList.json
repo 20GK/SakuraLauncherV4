@@ -1,0 +1,51 @@
+{
+  "Java": {
+    "JavaMessage": "ДЛЯ ЗАПУСКА ВАМ ПОТРЕБУЕТСЯ JAVA",
+    "JavaDownloadURL": "https://download.oracle.com/java/19/archive/jdk-19.0.2_windows-x64_bin.exe",
+    "JavaPlaceHolder": "Выделите и скопируйте на CTRL+C, и вставьте в браузер"
+  },
+
+  "ServerList": {
+    "Vanilla": {
+      "id": 1,
+      "nameServer": "Vanilla",
+      "description": "Приветствуем Вас на классическом сервере! Это то место, где можно обрести свободу для Ваших фантазий. Сервер подойдет для профи, которые могут похвастаться своими завораживающими постройками, и для тех, кто только-только начинает играть!",
+      "gameVersion": "1.19.3",
+      "serverOnline": 0,
+      "serverOnlineMax": 100,
+      "serverStatus": false,
+      "imageURL": "../images/VanillaLogo.png",
+      
+      "AlertJava": true,
+      "JavaVersion": 19
+    },
+
+    "Industrial": {
+      "id": 2,
+      "nameServer": "Industrial",
+      "description": "это уникальный сервер, на котором главная задача максимально автоматизировать крафты и добычу ресурсов просто в нереальных количествах, а также улучшать уже имеющиеся механизмы, генераторы энергии, инструменты, броню и оружие.",
+      "gameVersion": "1.12.2",
+      "serverOnline": 0,
+      "serverOnlineMax": 100,
+      "serverStatus": false,
+      "imageURL": "../images/Industrial.png",
+
+      "AlertJava": true,
+      "JavaVersion": 19
+    },
+
+    "TechnoMagic": {
+      "id": 3,
+      "nameServer": "TechnoMagic",
+      "description": "Привет из будущего! Этот сервер совместил в себе два самостоятельных мода - технический и магический. Наравне с волшебными палочками и феями, Вам предстоит строить огромные заводы и добывать металл в шахте. Стань самым умным и продвинутым магом!",
+      "gameVersion": "1.12.2",
+      "serverOnline": 0,
+      "serverOnlineMax": 100,
+      "serverStatus": false,
+      "imageURL": "../images/TechnoMagic.png",
+
+      "AlertJava": true,
+      "JavaVersion": 19
+    }
+  }
+}

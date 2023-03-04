@@ -15,7 +15,6 @@ export default function LaunchGameContent() {
         window.api.sendLaunchGame({versionGame: versionGame})
       }
     }
-
     ////
     launch()
   }, [])
